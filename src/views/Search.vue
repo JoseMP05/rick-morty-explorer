@@ -46,23 +46,22 @@
             max-width="400"
           />
         </v-col>
-        <v-col cols="4" v-for="character in characters" :key="character.id">
-          <v-card class="mt-4" max-width="400">
-            <v-img :src="character.image" height="200px"></v-img>
-            <v-card-title>{{ character.name }}</v-card-title>
-            <v-card-subtitle>
-              {{ character.status }} - {{ character.species }}
-            </v-card-subtitle>
-            <v-card-text>
-              Origen: {{ character.origin?.name }}
-            </v-card-text>
-          </v-card>
+        <v-col cols="3" v-for="character in characters" :key="character.id">
+          <CharacterCard 
+            :name="character.name"
+            :status="character.status"
+            :species="character.species"
+            :origin="character.origin"
+            :image="character.image"
+          />
         </v-col>
       </v-row>
   </v-container>
 </template>
 
 <script setup lang="ts">
+  import CharacterCard from '@/components/CharacterCard..vue'
+
   import { ref } from 'vue'
 
   const historyStorage = localStorage.getItem('history')
