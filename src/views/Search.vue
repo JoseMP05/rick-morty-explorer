@@ -37,7 +37,7 @@
           {{ error }}
         </v-alert>
       <v-row>
-        <v-col cols="4" v-for="n in 6" :key="n" v-if="loading">
+        <v-col cols="4" v-for="n in 9" :key="n" v-if="loading">
           <v-skeleton-loader
             :loading="loading"
             :elevation="2"
@@ -67,7 +67,7 @@
 
   const historyStorage = localStorage.getItem('history')
   const history = ref(JSON.parse(historyStorage || '[]'))
-  const nameCharacter = ref('')
+  const nameCharacter = ref(null)
 
 
   const rulesName = [
