@@ -41,6 +41,8 @@ El diseño es libre, se sugiere realizar algo simple, minimalista y no dedicar m
 
 ## Pending improves
 
-- Componentize
+- Refactor and componentize
 - Debounce on input search input
 - Pagination
+- Add correct validations for response fetchAPI
+- Testing
