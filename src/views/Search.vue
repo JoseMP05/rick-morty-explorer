@@ -60,14 +60,17 @@
       const res = await fetch(`https://rickandmortyapi.com/api/character/?name=${nameCharacter.value}`)
       
       if(!res?.ok){
-        throw new Error('Character not found');
+        throw new Error('Keep trying');
       }
       const data = await res.json()
 
+      if(data.info.count > 200)
+        throw new Error('Character not found');
+
       characters.value = data.results
-      console.log(characters.value)
+      console.log(data.info.count)
     } catch (err) {
-      error.value = `Something went wrong: ${err}`
+      error.value = err
     } finally {
       loading.value = false
     }
