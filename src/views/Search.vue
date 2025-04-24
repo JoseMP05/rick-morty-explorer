@@ -1,7 +1,7 @@
 <template>
   <v-container>
     <h1>Rick & Morty Explorer</h1>
-    <v-form v-model="search">
+    <v-form v-model="search" @submit.prevent>
         <v-row>
           <v-col
             cols="12"
@@ -9,10 +9,11 @@
           >
             <v-text-field
               v-model="nameCharacter"
-              :rules="nameRules"
-              variant="outlined"
               label="Character name"
+              variant="outlined"
               required
+              :rules="nameRules"
+              @keyup.enter="fetchCharacter"
               >
             </v-text-field>
           </v-col>
