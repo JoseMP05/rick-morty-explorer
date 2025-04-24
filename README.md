@@ -1,64 +1,46 @@
-# prueba-tecnica-solenium
+# Prueba técnica
 
-This template should help get you started developing with Vue 3 in Vite.
+## Assignments
 
-## Recommended IDE Setup
+### HU01 - Búsqueda de personajes
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+Como usuario, quiero ingresar el nombre de un personaje y buscarlo, para ver su información básica.
 
-## Type Support for `.vue` Imports in TS
+- Campo de entrada y botón de búsqueda. ✅
+- Manejo de errores si el nombre no existe. ✅
+- Indicador de carga durante la búsqueda. ✅
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+### HU02 - Visualización de atributos
 
-## Customize configuration
+Como usuario, quiero ver los atributos más importantes del personaje, para conocerlo mejor:
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+- **Nombre (name)**  ✅
+- **Imagen (image)**  ✅
+- **Especie (Species)**  ✅
+- **Estado (Alive, Dead, Unknown)**  ✅
+- **Origen (Origin name)**  ✅
 
-## Project Setup
+Documentación: [Rick and Morty API](https://rickandmortyapi.com/documentation/#rest)
 
-```sh
-pnpm install
-```
+### HU03 - Historial de búsquedas
 
-### Compile and Hot-Reload for Development
+Como usuario, quiero ver los últimos personajes que he buscado, para poder acceder rápidamente a ellos nuevamente.
 
-```sh
-pnpm dev
-```
+- Mostrar lista con los últimos 3 personajes buscados.
+- Permitir volver a consultar haciendo clic en uno.
 
-### Type-Check, Compile and Minify for Production
+### HU04 - Diseño accesible y responsive
 
-```sh
-pnpm build
-```
+Como usuario, quiero que la aplicación se vea bien en distintos dispositivos y sea fácil de usar.
 
-### Run Unit Tests with [Vitest](https://vitest.dev/)
+- Uso de Vuetify para los componentes visuales.
+- Diseño responsive y centrado en usabilidad.
+- Referencia de diseño: [React Projects](https://react-projects-psi.vercel.app/).
 
-```sh
-pnpm test:unit
-```
+El diseño es libre, se sugiere realizar algo simple, minimalista y no dedicar mucho tiempo a esta parte.
 
-### Run End-to-End Tests with [Playwright](https://playwright.dev)
+## Pending improves
 
-```sh
-# Install browsers for the first run
-npx playwright install
-
-# When testing on CI, must build the project first
-pnpm build
-
-# Runs the end-to-end tests
-pnpm test:e2e
-# Runs the tests only on Chromium
-pnpm test:e2e --project=chromium
-# Runs the tests of a specific file
-pnpm test:e2e tests/example.spec.ts
-# Runs the tests in debug mode
-pnpm test:e2e --debug
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-pnpm lint
-```
+- Componentize
+- Debounce on input search input
+- Pagination
