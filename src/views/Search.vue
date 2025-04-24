@@ -7,14 +7,25 @@
             cols="12"
             md="4"
           >
-            <v-text-field
+            <!-- <v-text-field
               v-model="nameCharacter"
               label="Character name"
               placeholder="Eg: Jerry Smith"
               variant="outlined"
               :rules="rulesName"
               >
-            </v-text-field>
+            </v-text-field> -->
+            <v-combobox
+              v-model="nameCharacter"
+              label="Character name"
+              placeholder="Eg: Jerry Smith"
+              :items="history"
+              :rules="rulesName"
+              density="comfortable"
+              prepend-inner-icon="mdi-magnify"
+              variant="outlined"
+              @keyup.enter="handleSubmit"
+            ></v-combobox>
           </v-col>
           <v-btn type="submit" variant="tonal">
           Search
@@ -54,11 +65,16 @@
 <script setup lang="ts">
   import { ref } from 'vue'
 
+  const historyStorage = localStorage.getItem('history')
+  const history = ref(JSON.parse(historyStorage || '[]'))
+  const nameCharacter = ref('')
+
+
   const rulesName = [
     value => !!value || 'Field is required',
     value => value.length >= 3 || 'Name must be at least 3 characters long'
   ]
-
+  
   const isFormValid = ref(false)
   const searchForm = ref(null)
 
@@ -66,12 +82,21 @@
     const validate = await searchForm.value?.validate()
     isFormValid.value = validate.valid
     if (isFormValid.value) {
-      console.log('fetching...')
+      console.log('fetching...', history.value)
+
+      if(!history.value.includes(nameCharacter.value)){
+        history.value.unshift(nameCharacter.value)
+        if(history.value.length > 3)
+          history.value.pop()
+        localStorage.setItem('history', JSON.stringify(history.value))
+      }
+
+      console.log(localStorage.getItem('history'))
+
       await fetchCharacter()
     }
   }
 
-  const nameCharacter = ref('')
   const characters = ref(null)
   const error = ref('')
   const loading = ref(false)

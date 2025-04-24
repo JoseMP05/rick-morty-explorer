@@ -26,8 +26,8 @@ Documentación: [Rick and Morty API](https://rickandmortyapi.com/documentation/#
 
 Como usuario, quiero ver los últimos personajes que he buscado, para poder acceder rápidamente a ellos nuevamente.
 
-- Mostrar lista con los últimos 3 personajes buscados.
-- Permitir volver a consultar haciendo clic en uno.
+- Mostrar lista con los últimos 3 personajes buscados. ✅
+- Permitir volver a consultar haciendo clic en uno. ✅
 
 ### HU04 - Diseño accesible y responsive
 
