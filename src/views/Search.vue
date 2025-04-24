@@ -1,7 +1,7 @@
 <template>
   <v-container>
     <h1>Rick & Morty Explorer</h1>
-    <v-form v-model="search" @submit.prevent>
+    <v-form ref="searchForm" v-model="isFormValid" @submit.prevent="handleSubmit">
         <v-row>
           <v-col
             cols="12"
@@ -10,14 +10,13 @@
             <v-text-field
               v-model="nameCharacter"
               label="Character name"
+              placeholder="Eg: Jerry Smith"
               variant="outlined"
-              required
-              :rules="nameRules"
-              @keyup.enter="fetchCharacter"
+              :rules="rulesName"
               >
             </v-text-field>
           </v-col>
-          <v-btn @click="fetchCharacter" variant="tonal">
+          <v-btn type="submit" variant="tonal">
           Search
           </v-btn>
         </v-row>
@@ -27,6 +26,15 @@
           {{ error }}
         </v-alert>
       <v-row>
+        <v-col cols="4" v-for="n in 6" :key="n" v-if="loading">
+          <v-skeleton-loader
+            :loading="loading"
+            :elevation="2"
+            type="card"
+            class="mt-4"
+            max-width="400"
+          />
+        </v-col>
         <v-col cols="4" v-for="character in characters" :key="character.id">
           <v-card class="mt-4" max-width="400">
             <v-img :src="character.image" height="200px"></v-img>
@@ -43,8 +51,25 @@
   </v-container>
 </template>
 
-<script setup>
+<script setup lang="ts">
   import { ref } from 'vue'
+
+  const rulesName = [
+    value => !!value || 'Field is required',
+    value => value.length >= 3 || 'Name must be at least 3 characters long'
+  ]
+
+  const isFormValid = ref(false)
+  const searchForm = ref(null)
+
+  async function handleSubmit() {
+    const validate = await searchForm.value?.validate()
+    isFormValid.value = validate.valid
+    if (isFormValid.value) {
+      console.log('fetching...')
+      await fetchCharacter()
+    }
+  }
 
   const nameCharacter = ref('')
   const characters = ref(null)
@@ -60,18 +85,20 @@
       const res = await fetch(`https://rickandmortyapi.com/api/character/?name=${nameCharacter.value}`)
       
       if(!res?.ok){
-        throw new Error('Keep trying');
+        throw new Error('Keep trying')
       }
       const data = await res.json()
-
-      if(data.info.count > 200)
-        throw new Error('Character not found');
+      
+      // if(data.info.count > 200)
+      //   throw new Error('Character not found');
 
       characters.value = data.results
-      console.log(data.info.count)
+      console.log(data)
+
     } catch (err) {
       error.value = err
     } finally {
+      console.log("finished")
       loading.value = false
     }
   }
