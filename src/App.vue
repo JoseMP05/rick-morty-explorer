@@ -7,17 +7,8 @@ import Search from './views/Search.vue'
 </script>
 
 <template>
-  <v-app>
-    <!-- <header>
-      <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
-      
-      <div class="wrapper">
-        <HelloWorld msg="You did it!" />
-      </div>
-    </header> -->
-    
+  <v-app class="bg-grey-lighten-3 pa-8">
     <main>
-      <!-- <TheWelcome /> -->
       <Search />
     </main>
   </v-app>
