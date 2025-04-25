@@ -12,16 +12,15 @@
       {{ error }}
     </v-alert>
     <v-row>
-      <v-col cols="4" v-for="n in 9" :key="n" v-if="loading">
+      <v-col cols="6" sm="4" md="3" v-for="n in 9" :key="n" v-if="loading">
         <v-skeleton-loader
           :loading="loading"
           :elevation="2"
-          type="card"
+          type="image, card, text"
           class="mt-4"
-          max-width="400"
         />
       </v-col>
-      <v-col cols="3" v-for="character in characters" :key="character.id">
+      <v-col cols="6" sm="4" md="3" v-for="character in characters" :key="character.id">
         <CharacterCard 
           :name="character.name"
           :status="character.status"
@@ -48,7 +47,7 @@
     characters.value = null
     error.value = ''
     loading.value = true
-
+    
     try {
       const data = await fetchCharacter(nameCharacter)
 
