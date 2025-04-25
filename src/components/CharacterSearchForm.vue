@@ -1,7 +1,7 @@
 <template>
   <v-form ref="searchForm" v-model="isFormValid" @submit.prevent="handleSubmit">
     <v-row>
-      <v-col cols="12" md="8">
+      <v-col cols="12" sm="8">
         <v-combobox
           v-model="nameCharacter"
           label="Character name"
@@ -14,7 +14,7 @@
           @keyup.enter="handleSubmit"
         ></v-combobox>
       </v-col>
-      <v-col cols="12" md="4">      
+      <v-col cols="12" sm="4">      
         <v-btn type="submit" variant="tonal" class="bg-primary">
         Search
         </v-btn>
@@ -56,6 +56,14 @@
 
 <style scoped>
   .v-btn{
-    height: calc(100% - 22px);
+    width: 100%;
+    margin-top: -12px;
+  }
+
+  @media screen and (min-width: 600px) {
+    .v-btn{
+      margin-top: initial;
+      height: calc(100% - 22px);
+    }
   }
 </style>
