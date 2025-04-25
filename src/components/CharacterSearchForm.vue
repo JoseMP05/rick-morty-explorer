@@ -9,13 +9,13 @@
           :items="history"
           :rules="rulesName"
           density="comfortable"
-          prepend-inner-icon="mdi-magnify"
           variant="outlined"
+          clearable
           @keyup.enter="handleSubmit"
         ></v-combobox>
       </v-col>
       <v-col cols="12" sm="4">      
-        <v-btn type="submit" variant="tonal" class="bg-primary">
+        <v-btn type="submit" variant="tonal" class="bg-primary" append-icon="mdi-magnify">
         Search
         </v-btn>
       </v-col>

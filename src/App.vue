@@ -3,7 +3,6 @@
 // import TheWelcome from './components/TheWelcome.vue'
 import Search from './views/Search.vue'
 
-
 </script>
 
 <template>
