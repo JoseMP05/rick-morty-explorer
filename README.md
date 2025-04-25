@@ -1,33 +1,45 @@
 # Prueba técnica
 
+## Índice
+
+1. [Instalación](#instalación)
+2. [Estructura del proyecto](#estructura-del-proyecto)
+  - [Explicación de las carpetas principales](#explicación-de-las-carpetas-principales)
+3. [Tareas](#tareas)
+  - [HU01 - Búsqueda de personajes](#hu01---búsqueda-de-personajes)
+  - [HU02 - Visualización de atributos](#hu02---visualización-de-atributos)
+  - [HU03 - Historial de búsquedas](#hu03---historial-de-búsquedas)
+  - [HU04 - Diseño accesible y responsive](#hu04---diseño-accesible-y-responsive)
+4. [Oportunidades de mejora](#oportunidades-de-mejora)
+5. [Aclaraciones](#aclaraciones)
+
 ## Instalación
 
 Pasos para instalar y ejecutar el proyecto localmente:
 
 1. Clona este repositorio en tu máquina local:
-    ```bash
-    git clone <URL_DEL_REPOSITORIO>
-    ```
+   ```bash
+   git clone <URL_DEL_REPOSITORIO>
+   ```
 
 2. Navega al directorio del proyecto:
-    ```bash
-    cd rick-morty-explorer
-    ```
+   ```bash
+   cd rick-morty-explorer
+   ```
 
 3. Instala las dependencias utilizando `pnpm`:
-    ```bash
-    pnpm install
-    ```
+   ```bash
+   pnpm install
+   ```
 
 4. Inicia el servidor de desarrollo:
-    ```bash
-    pnpm dev
-    ```
+   ```bash
+   pnpm dev
+   ```
 
 5. Abre tu navegador y ve a `http://localhost:5173` para ver la aplicación en funcionamiento.
 
 ## Estructura del proyecto
-
 
 ### Explicación de las carpetas principales
 
@@ -79,7 +91,7 @@ Como usuario, quiero que la aplicación se vea bien en distintos dispositivos y 
 
 El diseño es libre, se sugiere realizar algo simple, minimalista y no dedicar mucho tiempo a esta parte.
 
-## ¿Qué podría mejorar?
+## Oportunidades de mejora
 
 - **Paginación:** Agregaría paginación tipo infinite scroll al identificar cuando el usuario esté terminando de hacer scroll en la lista de cartas de los personajes, usando Intersection Observer.
 
