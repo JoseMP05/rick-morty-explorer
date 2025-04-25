@@ -27,9 +27,9 @@
   import { history, addToHistory } from '@/services/history'
   import { ref, defineEmits } from 'vue'
 
-  // defineProps({
-  //   initialHistory: { type: Array as () => string[], required: true}
-  // })
+  interface SearchForm {
+    validate: () => Promise<{ valid: boolean }>
+  }
 
   const rulesName = [
     (value:string) => !!value || 'Field is required',
@@ -38,19 +38,18 @@
 
   const emit = defineEmits(['search'])
 
-  const nameCharacter = ref(null)
+  const nameCharacter = ref<string | null>(null)
   const isFormValid = ref(false)
-  const searchForm = ref(null)
+  const searchForm = ref<SearchForm | null>(null)
 
   async function handleSubmit() {
     const validate = await searchForm.value?.validate()
-    isFormValid.value = validate.valid;
+    isFormValid.value = validate?.valid || false
 
     if (!isFormValid.value)
       return
 
-    console.log('previus to fetch...')
-    addToHistory(nameCharacter.value)
+    addToHistory(nameCharacter.value as string)
     emit('search', nameCharacter.value)
   }
 </script>
