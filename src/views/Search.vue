@@ -60,7 +60,7 @@
 </template>
 
 <script setup lang="ts">
-  import { fetchCharacter } from '@/api/rick&mortyApi'
+  import { fetchCharacter, type Result } from '@/api/rick&mortyApi'
   import CharacterCard from '@/components/CharacterCard..vue'
 
   import { ref } from 'vue'
@@ -97,21 +97,22 @@
     }
   }
 
-  const characters = ref(null)
+  const characters = ref<Result[] | null>(null)
   const error = ref('')
   const loading = ref(false)
 
   async function getCharacter() {
+    const defaultCharacter = 'Jerry'
     characters.value = null
     error.value = ''
     loading.value = true
 
     try {
-      const data = await fetchCharacter(nameCharacter.value)
+      const data = await fetchCharacter(nameCharacter.value ?? defaultCharacter)
 
       characters.value = data.results
     } catch (err) {
-      error.value = err
+      error.value = err instanceof Error ? err.message : String(err)
     } finally {
       console.log("finished")
       loading.value = false
