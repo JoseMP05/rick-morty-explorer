@@ -60,6 +60,7 @@
 </template>
 
 <script setup lang="ts">
+  import { fetchCharacter } from '@/api/rick&mortyApi'
   import CharacterCard from '@/components/CharacterCard..vue'
 
   import { ref } from 'vue'
@@ -92,7 +93,7 @@
 
       console.log(localStorage.getItem('history'))
 
-      await fetchCharacter()
+      await getCharacter()
     }
   }
 
@@ -100,25 +101,15 @@
   const error = ref('')
   const loading = ref(false)
 
-  async function fetchCharacter() {
+  async function getCharacter() {
     characters.value = null
     error.value = ''
     loading.value = true
 
     try {
-      const res = await fetch(`https://rickandmortyapi.com/api/character/?name=${nameCharacter.value}`)
-      
-      if(!res?.ok){
-        throw new Error('Keep trying')
-      }
-      const data = await res.json()
-      
-      // if(data.info.count > 200)
-      //   throw new Error('Character not found');
+      const data = await fetchCharacter(nameCharacter.value)
 
       characters.value = data.results
-      console.log(data)
-
     } catch (err) {
       error.value = err
     } finally {
