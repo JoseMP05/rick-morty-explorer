@@ -11,8 +11,13 @@
       "path": "./tsconfig.vitest.json"
     }
   ],
-  "paths": {
-    "@components/*": ["src/components/*"],
-    "@views/*": ["src/views/*"]
-  }
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@components/*": ["src/components/*"],
+      "@views/*": ["src/views/*"],
+      "@api/*": ["src/api/*"],
+      "@services/*": ["src/services/*"]
+    }
+  },
 }
