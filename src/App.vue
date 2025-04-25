@@ -1,7 +1,7 @@
 <script setup lang="ts">
 // import HelloWorld from './components/HelloWorld.vue'
 // import TheWelcome from './components/TheWelcome.vue'
-import Search from './views/Search.vue'
+import Search from './views/SearchView.vue'
 
 </script>
 

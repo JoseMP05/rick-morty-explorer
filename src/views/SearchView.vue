@@ -1,3 +1,4 @@
+<!-- eslint-disable vue/no-use-v-if-with-v-for -->
 <template>
   <v-container>
     <v-row>
@@ -8,7 +9,7 @@
         />
       </v-col>
     </v-row>
-    <v-alert v-if="error" type="error" class="mt-4">
+    <v-alert v-if="error" type="error" class="mt-4" closable>
       {{ error }}
     </v-alert>
     <v-row>
@@ -50,12 +51,11 @@
     
     try {
       const data = await fetchCharacter(nameCharacter)
-
+      console.log(data.info)
       characters.value = data.results
     } catch (err) {
       error.value = err instanceof Error ? err.message : String(err)
     } finally {
-      console.log("finished")
       loading.value = false
     }
   }
