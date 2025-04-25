@@ -7,7 +7,7 @@ import Search from './views/Search.vue'
 </script>
 
 <template>
-  <v-app class="bg-grey-lighten-3 pa-8">
+  <v-app class="bg-grey-lighten-3 pa-1 pa-md-8">
     <main>
       <Search />
     </main>
